@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const db = require('./config/connection');
+const connectDB = require('./config/connection');
 const routes = require('./routes');
 const { ApolloServer } = require('apollo-server-express');
 const { authMiddleware } = require('./utils/auth');
@@ -35,12 +35,14 @@ async function startApolloServer() {
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
   });
 
-  db.once('open', () => {
-    app.listen(PORT, '0.0.0.0', () => {
+  connectDB()
+  .then(() => {
+    app.listen(PORT, () => {
       console.log(`🌍 API server running on port ${PORT}!`);
       console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
     });
-  });
+  })
+  .catch(err => console.log(err));
 }
 
 startApolloServer();
