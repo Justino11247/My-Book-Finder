@@ -4,8 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "watch": "nodemon server.js"
+    "watch": "nodemon server.js",
+    "start": "node server/server.js",
+    "build": "cd client && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
@@ -14,7 +15,9 @@
     "bcrypt": "^4.0.1",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^8.0.0"
+    "mongoose": "^8.0.0",
+    "@apollo/client": "^3.11.8",
+    "graphql": "^16.9.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.3"
