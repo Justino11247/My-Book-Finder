@@ -18,5 +18,8 @@
   },
   "engines": {
     "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "apollo-server-express": "^3.13.0"
   }
 }
